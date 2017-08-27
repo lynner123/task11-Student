@@ -9,10 +9,9 @@ function getStudent(str) {
     return -1;
 }
 function checkMessage(input) {
-    let array = input;
-    let judgeOne = array.length > 3;
+    let judgeOne = input.length > 3;
     let judgeTwo = true;
-    let courses = array.slice(3, array.length);
+    let courses = input.slice(3, input.length);
     for (let course of courses) {
         if (course.split(":").length !== 2) {
             judgeTwo = false;
@@ -30,6 +29,7 @@ function arrayStudent(input) {
     let courses = getCourses(input);
     return new Student(name,id,clazz,courses);
 }
+
 function getCourses(input) {
     let courses = [];
     for (let item of input) {

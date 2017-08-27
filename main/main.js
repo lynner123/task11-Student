@@ -16,15 +16,19 @@ function main() {
             case 1:
                 let student = getStudent(getMessage(addMessage));
                 while (student === -1) {
-                    student = getMessage(wrongMessage);
+                    student = getStudent(getMessage(wrongMessage));
                 }
-                students.push(student);
+                students.push(student);console.log(student)
                 addSuccess(student);
                 break;
             case 2:
                 let getId = getMessage(printMessage);
-                printStudent()
+                let print = printStudent(students,getId);
+                while(print === -1){
+                    print = printStudent(students,getMessage(printMessage));
+                }
 
+                break;
             case 3:
                 return;
             default:
