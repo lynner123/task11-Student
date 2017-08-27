@@ -1,7 +1,7 @@
 let Student = require('./student');
 
 function getStudent(str) {
-    let input = str.split(",");console.log(input)
+    let input = str.split(",");
     if (checkMessage(input)) {
         let student = arrayStudent(input);
         return student;
@@ -9,9 +9,10 @@ function getStudent(str) {
     return -1;
 }
 function checkMessage(input) {
-    let judgeOne = input.length > 3;console.log(input.length)
+    let array = input;
+    let judgeOne = array.length > 3;
     let judgeTwo = true;
-    let courses = input.splice(3, input.length);console.log(courses)
+    let courses = array.slice(3, array.length);
     for (let course of courses) {
         if (course.split(":").length !== 2) {
             judgeTwo = false;
@@ -25,7 +26,7 @@ function checkMessage(input) {
 }
 
 function arrayStudent(input) {
-    let [name,id,clazz] = input.splice(0, 4);
+    let [name,id,clazz] = input.splice(0, 3);
     let courses = getCourses(input);
     return new Student(name,id,clazz,courses);
 }

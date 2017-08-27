@@ -23,7 +23,7 @@ function main() {
                 break;
             case 2:
                 let getId = getMessage(printMessage);
-
+                printStudent()
 
             case 3:
                 return;

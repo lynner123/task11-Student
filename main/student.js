@@ -1,10 +1,10 @@
 
 class Student{
-    constructor(name,id,clazz,subjects){
+    constructor(name,id,clazz,courses){
         this.name = name;
         this.id = id;
         this.clazz = clazz;
-        this.subjects = subjects;
+        this.courses = courses;
     }
 }
 
