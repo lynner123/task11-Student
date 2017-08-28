@@ -6,9 +6,51 @@ function printStudent(students,getId) {
         return -1;
     }
 
-    let menu = printMenu();
+    let singleStudent = printSingle(students, ids);
+    let allScores = printSum(students);
 
+    return singleStudent + allScores;
+}
 
+function printSum(students) {
+    let totalScores = students.reduce((sum, student) => { return sum + student.sum}, 0);
+    let averageSum =  totalScores / students.length;
+
+    let result = [];
+    for (let student of students) {
+        result.push(student.sum);
+    }
+    let midSum = result.length%2 === 0 ? (result[result.length/2]+result[result.length/2-1])/2 :result[Math.floor(result.length/2)];
+
+    return `
+å…¨ç­æ€»åˆ†å¹³å‡æ•°ï¼š${averageSum}
+å…¨ç­æ€»åˆ†ä¸­ä½æ•°ï¼š${midSum}`;
+}
+
+function printSingle(students, ids) {
+    let menu = printMenu();console.log(students);
+    students = filterStudent(students, ids);console.log(students);
+    let scores = printScores(students);console.log(scores);
+    return  menu + `
+========================
+${scores}
+========================`;
+}
+
+function printScores(students) {
+    let result = [];console.log(students);
+    students.map(student => {
+        let scores = [];
+        student.courses.map(course => {
+            scores.push(course.score);
+        });
+        result.push(`${student.name}|${scores.join("|")}|${student.average}|${student.sum}`);
+    });console.log(result);
+    return result.join("\n");
+}
+
+function filterStudent(students, ids) {
+    return students.filter(student => ids.includes(student.id));
 }
 
 function checkId(students, input) {
@@ -22,8 +64,8 @@ function checkId(students, input) {
 }
 
 function printMenu() {
-    return `³É¼¨µ¥
-    ĞÕÃû|ÊıÑ§|ÓïÎÄ|Ó¢Óï|±à³Ì|Æ½¾ù·Ö|×Ü·Ö`;
+    return `æˆç»©å•
+å§“å|æ•°å­¦|è¯­æ–‡|è‹±è¯­|ç¼–ç¨‹|å¹³å‡åˆ†|æ€»åˆ†`;
 }
 
 module.exports = printStudent;

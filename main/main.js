@@ -1,4 +1,5 @@
 let getStudent = require('./getStudent');
+let printStudent = require('./printStudent');
 
 let getChoose = require('cli-interact').getNumber;
 let getMessage = require('cli-interact').question;
@@ -25,9 +26,9 @@ function main() {
                 let getId = getMessage(printMessage);
                 let print = printStudent(students,getId);
                 while(print === -1){
-                    print = printStudent(students,getMessage(printMessage));
+                    print = printStudent(students,getMessage(wrongPrintMessage));
                 }
-
+                getMessage(print + `\n按任意键回到主菜单`);
                 break;
             case 3:
                 return;
